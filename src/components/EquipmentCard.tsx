@@ -4,12 +4,16 @@ import type { Equipment } from "../types/Equipment";
 interface Props {
   equipment: Equipment;
   onDelete: (id: string) => void;
+  pendingDeleteId?: string | null;
 }
 
 export default function EquipmentCard({
   equipment,
   onDelete,
+  pendingDeleteId,
 }: Props) {
+  const isDeleting = pendingDeleteId === equipment.id;
+
   return (
     <div className="card">
 
@@ -44,8 +48,9 @@ export default function EquipmentCard({
       <button
         style={{ marginTop: 10, background: "crimson" }}
         onClick={() => onDelete(equipment.id!)}
+        disabled={isDeleting}
       >
-        Видалити
+        {isDeleting ? "Видалення..." : "Видалити"}
       </button>
 
     </div>

@@ -1,11 +1,15 @@
-import EquipmentForm from "../components/EquipmentForm";
+﻿import EquipmentForm from "../components/EquipmentForm";
 
-export default function Add() {
+interface Props {
+  setNotification?: (message: string, type?: "success" | "error" | "info") => void;
+}
+
+export default function Add({ setNotification }: Props) {
   return (
     <>
       <h1>Додати обладнання</h1>
 
-      <EquipmentForm />
+      <EquipmentForm setNotification={setNotification} />
     </>
   );
 }
